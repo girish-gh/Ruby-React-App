@@ -1,0 +1,9 @@
+
+RUBY on RAILS
+rails new foldername
+bundle install
+bundle update
+rbenv rehash
+gem install
+
+REACT

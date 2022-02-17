@@ -1,0 +1,36 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Todoitems</h1>
+
+<br>
+<table border=1>
+  <thead>
+    <tr>
+      <th width="20%">Todolist</th>
+      <th>Item Name</th>
+      <th>Recurring?</th>
+      <th>Tags</th>
+      <th>Delete</th>
+         
+    </tr>
+  </thead>
+    <tbody>
+
+  <% @todoitems.each do |todoitem| %>
+  <tr>
+      <td ><strong><%= todoitem.todolist.title %> </strong></td>
+      <td><%=todoitem.name %> </td>
+     <%  if todoitem.recurring  %>  <td bgcolor="green">Yes</td>    
+      <% else %><td bgcolor="red">No</td>  <% end %>
+      </td>
+      <td><%= Todoitem.to_taglist(todoitem) %></td> 
+      <td>  <%= link_to "Destroy",todolist_todoitem_manualDelete_url(todoitem.todolist,todoitem) %></ </td>  
+    </tr>    
+  <% end %>
+ </tbody>
+</table><br>
+
+<strong>Add New Todoitem</strong><br><br>
+<%= render "form", todoitem: @todoitem %><br><br>
+<%= link_to "Back to Todolists", todolists_path %>
+

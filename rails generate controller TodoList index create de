@@ -1,0 +1,25 @@
+rails generate controller TodoList index create delete update
+
+rails g model TodoList title:string description:string has_many:TodoItem
+
+rails destroy model TodoList 
+
+
+
+
+rails generate controller TodoItem index create delete update
+
+rails g model TodoItem name:string description:string isRecurring:boolean isComplete:boolean completedOn:datetime Todo_list:belongs_to has_many:tag
+
+rails destroy model TodoItem 
+
+
+
+
+
+
+
+rails g model Tag tagname:string Todo_item:belongs_to
+
+rails destroy model Tag 
+

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  isComplete: false
+  completedOn: 2022-02-11 22:44:28
+  Todo_list: one
+
+two:
+  name: MyString
+  description: MyString
+  isComplete: false
+  completedOn: 2022-02-11 22:44:28
+  Todo_list: two
