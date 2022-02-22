@@ -102,8 +102,7 @@ const TodoItems = () => {
   }
 
   return (
-    <React.Fragment>
-      {/* {alert(params.name)} */}
+    <React.Fragment>      
       <div>
         <h1>Todo Items for --{params.title}</h1>
         <p className={styles.notice}>{topMessage}</p>

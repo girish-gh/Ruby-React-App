@@ -1,4 +1,3 @@
-
 module Api::V1
 
   class TodoListsController < ApplicationController
@@ -88,4 +87,3 @@ module Api::V1
           end
   end
 end
-

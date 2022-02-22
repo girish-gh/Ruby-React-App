@@ -101,7 +101,6 @@ module Api::V1
         end
         
       private
-
         def set_todo_list    
             @todo_list = TodoList.find(params[:todo_list_id])
             p "@todo_list = #{@todo_list.title}"

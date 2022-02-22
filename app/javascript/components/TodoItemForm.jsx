@@ -13,7 +13,7 @@ const TodoItemForm = (props) => {
   const recurringInputRef = useRef();
 
   const submitHandler = (event) => {
-    event.preventDefault();
+    event.preventDefault(); 
     const enteredName = nameInputRef.current.value;
     const enteredTags = tagsInputRef.current.value;
     const checked = recurringInputRef.current.checked;

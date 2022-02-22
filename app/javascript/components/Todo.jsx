@@ -43,7 +43,6 @@ const Todo = (props) => {
       ) === true
     ) {
       try {
-        //alert(deleteLink);
         const response = await axios.delete(deleteLink);
 
         if (!response.statusText === "OK") {
