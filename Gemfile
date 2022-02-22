@@ -69,10 +69,32 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+
+  # gem "webdrivers"
+
   gem "capybara"
+  gem "chromedriver-helper", "1.0.0"
+  gem "puffing-billy"
+  gem "pry"
+  gem "rspec"
   gem "selenium-webdriver"
-  gem "webdrivers"
+  gem 'sinatra' # https://github.com/sinatra/sinatra/issues/1055
+
+  gem "openssl"
+  gem 'eventmachine', '1.3.0.dev.1', :git => "git://github.com/eventmachine/eventmachine.git"
+  # gem 'factory_girl_rails'
+  # gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  # gem "capybara-webkit"
+  # gem 'database_cleaner'
+
+  #gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
+  # gem 'capybara'
+  # gem 'selenium-webdriver'
 end
 
 gem "pg"
 gem 'rack-cors'
+
+
+
+

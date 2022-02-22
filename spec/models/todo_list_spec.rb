@@ -28,16 +28,14 @@ RSpec.describe TodoList, :type => :model do
   context 'validation test' do
       it 'ensures title presence' do
         todolist =  TodoList.create(description: "description",created_at:"01-01-2020",updated_at:"01-01-2020")
-        p todolist       
-        expect{todolist}.to raise_error("NotNullViolation")
+        expect(todolist.id).to eq (nil)
     end
   end
 
   context 'validation test' do
     it 'ensures description presence' do
-      todolist =  TodoList.create(title: "title",created_at:"01-01-2020",updated_at:"01-01-2020")
-      p todolist       
-      expect{todolist}.to raise_error("NotNullViolation")
+      todolist =  TodoList.create(title: "title",created_at:"01-01-2020",updated_at:"01-01-2020")    
+      expect(todolist.id).to eq (nil)
   end
 end
 

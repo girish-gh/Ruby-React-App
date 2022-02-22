@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "db/postgre_todo_dev",
+            "database": "db/postgre_todo_dev",
+            "username": "igx",
+            "password": ""
+        }
+    ]
+}

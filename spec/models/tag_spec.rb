@@ -32,9 +32,9 @@ RSpec.describe Tag, :type => :model do
   context 'validation test' do
     it 'ensures tagname presence' do
     todolist =  TodoList.create(title: "title",description: "description",created_at:"01-01-2020",updated_at:"01-01-2020")
-    todoItem =  todolist.todo_items.create(name: "foo",created_at:"01-01-2020",updated_at:"01-01-2020")
+    todoItem =  todolist.todo_items.create(name: "foo",isRecurring: true,created_at:"01-01-2020",updated_at:"01-01-2020")
     tag =  todoItem.tags.create(created_at:"01-01-2020",updated_at:"01-01-2020")
-    expect(tag).to raise_error("NotNullViolation")
+    expect(tag.id).to eq (nil)
   end
   end
 

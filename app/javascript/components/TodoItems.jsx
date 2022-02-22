@@ -6,13 +6,11 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import TableHead from "../components/TableHead";
 import TodoItemForm from "../components/TodoItemForm";
-// import TodoListAPIService from "../services/TodoListAPIService";
 
 const TodoItems = () => {
   const params = useParams();
 
   const todosLink = "http://localhost:3000/api/v1/todo_lists";
-  //const todosLink = TodoListAPIService.todosLink;
   const todoItemsLink =
     "http://localhost:3000/api/v1/todo_lists/" +
     params.todoListId +
@@ -49,7 +47,6 @@ const TodoItems = () => {
       if (!response.statusText === "OK") {
         throw new Error("An error has occured");
       } else {
-        //response.map(item =>)
         setTodoItems(response.data);
       }
     } catch (error) {

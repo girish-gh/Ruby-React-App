@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_13_174122) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_19_100157) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "tags", force: :cascade do |t|
-    t.string "tagname"
+    t.string "tagname", null: false
     t.integer "todo_item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -23,19 +23,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_13_174122) do
   end
 
   create_table "todo_items", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.boolean "isComplete"
     t.datetime "completedOn"
     t.bigint "todo_list_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "isRecurring"
+    t.boolean "isRecurring", null: false
     t.index ["todo_list_id"], name: "index_todo_items_on_todo_list_id"
   end
 
   create_table "todo_lists", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
+    t.string "title", null: false
+    t.string "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

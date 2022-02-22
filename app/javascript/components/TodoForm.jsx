@@ -18,10 +18,10 @@ const TodoForm = (props) => {
         setTitleError(true);
         setDescError(true);
         throw new Error("Name and description are required");
-      } else if (enteredTitle.length === 0) {
+      } else if (enteredTitle.length <= 2) {
         setTitleError(true);
         throw new Error("Name is required");
-      } else if (enteredDescription.length === 0) {
+      } else if (enteredDescription.length <= 2) {
         setDescError(true);
         throw new Error("Description is required");
       }

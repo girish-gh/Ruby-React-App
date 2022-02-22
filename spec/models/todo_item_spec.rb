@@ -32,7 +32,7 @@ RSpec.describe TodoItem, :type => :model do
     it 'ensures name presence' do
       todolist =  TodoList.create(title: "title",description: "description",created_at:"01-01-2020",updated_at:"01-01-2020")
     todoItem =  todolist.todo_items.create(isRecurring: true,created_at:"01-01-2020",updated_at:"01-01-2020")
-      expect(todoItem).to raise_error("NotNullViolation")
+    expect(todoItem.id).to eq (nil)
   end
   end
 
@@ -40,9 +40,8 @@ RSpec.describe TodoItem, :type => :model do
       it 'ensures isRecurring presence' do
         todolist =  TodoList.create(title: "title",description: "description",created_at:"01-01-2020",updated_at:"01-01-2020")
         todoItem =  todolist.todo_items.create(name: "foo",created_at:"01-01-2020",updated_at:"01-01-2020")
-        expect(todoItem).to raise_error("NotNullViolation")
+        p todoItem
+        expect(todolist.todo_items.create(name: "foo",created_at:"01-01-2020",updated_at:"01-01-2020")).to raise_exception(ActiveRecord::NotNullViolation)
     end
   end
-
-
 end
