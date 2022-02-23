@@ -9,6 +9,16 @@
             "database": "db/postgre_todo_dev",
             "username": "igx",
             "password": ""
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "db/postgre_todo_test",
+            "database": "db/postgre_todo_test",
+            "username": "igx",
+            "password": ""
         }
     ]
 }

@@ -2,9 +2,9 @@ require "rails_helper"
 
 describe TodoList, type: :routing do
    
-    it "routes to the Todo controller" do
-        expect(get: "/").to route_to("todos#index")
-    end
+    # it "routes to the Todo controller" do
+    #     expect(get: "/").to route_to("todos#index")
+    # end
 
     it "routes to #destroy" do
          expect(delete: "api/v1/todo_lists/1").to route_to("api/v1/todo_lists#destroy", id: "1")

@@ -72,24 +72,30 @@ group :test do
 
   # gem "webdrivers"
 
-  gem "capybara"
-  gem "chromedriver-helper", "1.0.0"
-  gem "puffing-billy"
-  gem "pry"
-  gem "rspec"
-  gem "selenium-webdriver"
-  gem 'sinatra' # https://github.com/sinatra/sinatra/issues/1055
+  # gem "capybara"
+   gem "chromedriver-helper", "1.0.0"
+  # gem "puffing-billy"
+  # gem "pry"
+  # gem "rspec"
+  # gem "selenium-webdriver"
+  # gem 'sinatra' # https://github.com/sinatra/sinatra/issues/1055
 
-  gem "openssl"
-  gem 'eventmachine', '1.3.0.dev.1', :git => "git://github.com/eventmachine/eventmachine.git"
+  #gem "openssl"
+  #gem 'eventmachine', '1.3.0.dev.1'#, :git => "git://github.com/eventmachine/eventmachine.git"
+
   # gem 'factory_girl_rails'
   # gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   # gem "capybara-webkit"
   # gem 'database_cleaner'
 
-  #gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
-  # gem 'capybara'
-  # gem 'selenium-webdriver'
+  gem 'cucumber'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'rspec' 
+  gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
+
 end
 
 gem "pg"
