@@ -27,7 +27,7 @@ module Api::V1
 
         def edit        
             if request.patch?   
-                if @todo_item.update(todo_items_params_edit[:todo_item])
+                if @todo_item.update!(todo_items_params_edit[:todo_item])
                     TodoItemManager.SaveTags(@todo_item, todo_items_params_edit)    
                     flash[:topnotice] = 'Updated successully.'
                     redirect_to todo_list_todo_items_path(@todo_list)                
@@ -70,45 +70,40 @@ module Api::V1
             else
                 render json: {message: "Item Update failed -- Name - #{@todo_item.name}", status: :error}
             end        
-        end  
+        end     
     
 
         def destroy        
-            @todo_item.destroy
+            @todo_item.destroy!
             render json: {message: 'Deleted successfully '}, status: :ok
         end
 
         def move
             params.permit(:newtodo,:todo_list_id,:id,todo_item: {})
-            p @todo_item.id
-            p "Moving from #{params[:todo_list_id]} to #{params[:newtodo]}"
-            if @todo_item.update(todo_list_id: params[:newtodo])
-                p "@todo_item = #{@todo_item.name} #{@todo_item.todo_list_id}"
-                render json: {message: "Moved successfully from #{@todo_list.title}"}, status: :ok
+            if @todo_item.update!(todo_list_id: params[:newtodo])
+                render json: {message: "Moved successfully from #{@todo_list.title}", status: :ok}
             else
-            p Rails.logger.info(@todo_item.errors.messages.inspect)
+                render json: {message: @todo_item.errors.messages,  status: :error}
             end
         end
 
         def complete            
-            @todo_item.update(isComplete: true, completedOn: DateTime.now)
-            render json: {message: 'Status has changed'}, status: :ok
+            @todo_item.update!(isComplete: true, completedOn: DateTime.now)
+            render json: {message: 'Status has changed', status: :ok}
         end
 
         def incomplete            
-            @todo_item.update(isComplete: false, completedOn: nil)
+            @todo_item.update!(isComplete: false, completedOn: nil)
             render json: {message: 'Status has changed'}, status: :ok
         end
         
       private
         def set_todo_list    
             @todo_list = TodoList.find(params[:todo_list_id])
-            p "@todo_list = #{@todo_list.title}"
         end
 
         def set_todo_item        
             @todo_item = @todo_list.todo_items.find(params[:id])
-            p "@todo_item.name = #{@todo_item.name}"
         end
 
         def todo_items_params

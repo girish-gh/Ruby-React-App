@@ -6,13 +6,17 @@ class TodoItem < ApplicationRecord
 
   def TodoItem.to_taglist(todo_item)
     tag_array = todo_item.tag
-    #tag_list.join(',')
     tag_list = ""
     for tag in tag_array
       tag_list = tag_list + tag.name.to_s  + ", "   
     end
-    p "tag_list = #{tag_list}"
+
    tag_list
+  end
+
+
+  def whitelisted_attributes
+    [:name, :isRecurring]
   end
   
 end

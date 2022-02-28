@@ -28,20 +28,25 @@ RSpec.describe TodoItem, :type => :model do
     expect(TodoItem.count).to eq 0
   end
 
-  context 'validation test' do
-    it 'ensures name presence' do
-      todolist =  TodoList.create(title: "title",description: "description",created_at:"01-01-2020",updated_at:"01-01-2020")
-    todoItem =  todolist.todo_items.create(isRecurring: true,created_at:"01-01-2020",updated_at:"01-01-2020")
-    expect(todoItem.id).to eq (nil)
-  end
+  describe "structure" do
+    it "has its columns" do
+      is_expected.to have_db_column(:name)
+      is_expected.to have_db_column(:isRecurring)
+    end
   end
 
-    context 'validation test' do
-      it 'ensures isRecurring presence' do
-        todolist =  TodoList.create(title: "title",description: "description",created_at:"01-01-2020",updated_at:"01-01-2020")
-        todoItem =  todolist.todo_items.create(name: "foo",created_at:"01-01-2020",updated_at:"01-01-2020")
-        p todoItem
-        expect(todolist.todo_items.create(name: "foo",created_at:"01-01-2020",updated_at:"01-01-2020")).to raise_exception(ActiveRecord::NotNullViolation)
+  describe "associations" do
+    it do
+      is_expected.to belong_to(:todo_list)
+    end
+  end
+
+  describe 'validations' do
+    subject { Fabricate(:todo_item) }
+
+    it 'validate presence of fields' do
+      expect(subject).to validate_presence_of(:name)
+      expect(subject).to validate_presence_of(:isRecurring)
     end
   end
 end

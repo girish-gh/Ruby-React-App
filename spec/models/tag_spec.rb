@@ -38,5 +38,23 @@ RSpec.describe Tag, :type => :model do
   end
   end
 
-      
+  describe "structure" do
+    it "has its columns" do
+      is_expected.to have_db_column(:tagname)
+    end
+  end
+
+  describe "associations" do
+    it do
+      is_expected.to belong_to(:todo_item)
+    end
+  end
+
+  describe 'validations' do
+    subject { Fabricate(:tag) }
+
+    it 'validate presence of fields' do
+      expect(subject).to validate_presence_of(:tagname)      
+    end
+  end
 end

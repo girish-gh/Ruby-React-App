@@ -6,7 +6,8 @@ module Api::V1
     before_action :set_todo_list, only: %i[ show edit update destroy ] 
 
         def index              
-          @todo_lists = TodoList.all.includes(:todo_items).order(id: :asc)
+          @todo_lists = TodoList.all.eager_load(:todo_items).order(id: :asc)
+         
 
           returnlist = []
 
@@ -28,7 +29,10 @@ module Api::V1
               }
             returnlist << list
           end   
+          
           render json: returnlist
+
+
         end
 
       def new

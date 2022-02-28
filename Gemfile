@@ -88,13 +88,16 @@ group :test do
   # gem "capybara-webkit"
   # gem 'database_cleaner'
 
-  gem 'cucumber'
+  gem 'cucumber', '7.1.0'
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'rspec' 
-  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails','1.2.0', :require => false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
+  gem "fabrication"
+  gem "ffaker"
+  gem "shoulda-matchers"
 
 end
 
