@@ -29,7 +29,7 @@ module Api::V1
               }
             returnlist << list
           end   
-          
+
           render json: returnlist
 
 
@@ -45,8 +45,8 @@ module Api::V1
 
       # POST /todolists or /todolists.json
       def create
-        @todo_list = TodoList.new(todo_list_params)
-        if @todo_list.save
+        @todo_list = TodoList.create!(todo_list_params)
+        if @todo_list
               render json: {message: "New Todolist is created successfully. "}, status: :ok 
         else
           render json: { message: @todo_list.errors, status: :error}
@@ -56,7 +56,7 @@ module Api::V1
 
       # PATCH/PUT /todolists/1 or /todolists/1.json
       def update          
-          if @todo_list.update(todo_list_params)
+          if @todo_list.update!(todo_list_params)
             render json: {message: "Updated successfully."}, status: :ok 
           else
             render json: { message: @todo_list.errors}, status: :unprocessable_entity 
@@ -67,7 +67,7 @@ module Api::V1
       # DELETE /todolists/1 or /todolists/1.json
       def destroy
         @todo_list_todelete = TodoList.find(params[:id])
-        if @todo_list_todelete.destroy  
+        if @todo_list_todelete.destroy! 
           render json: {message: "Deleted successfully -- \nTitle: #{@todo_list.title}"}, status: :ok
          else
           render json: { message: @todo_list.errors}, status: :unprocessable_entity 
@@ -76,7 +76,7 @@ module Api::V1
 
       def manualDelete
         @todo_list_todelete = TodoList.find(params[:todo_list_id])
-        @todo_list_todelete.destroy
+        @todo_list_todelete.destroy!
         redirect_to todolists_url 
       end
 
