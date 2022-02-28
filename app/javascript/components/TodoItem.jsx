@@ -9,9 +9,7 @@ const TodoItem = (props) => {
   const [todoItemId, setTodoItemId] = React.useState(0);
   const [todoItemName, setTodoItemName] = React.useState("");
   const [todoItemIsRecurring, setTodoItemIsRecurring] = React.useState(false);
-  // const [todoItemTags, setTodoItemTags] = React.useState("");
   const [todoItemTags, setTodoItemTags] = useState(["To do"]);
-  // const [tags, setTags] = useState(["To do"]);
 
   const deleteLink =
     "http://localhost:3000/api/v1/todo_lists/" +
@@ -32,7 +30,7 @@ const TodoItem = (props) => {
     "/todo_items/" +
     props.id +
     "/complete";
-
+  
   let completeLinkText = "Complete";
   if (props.completed === "Yes") {
     completeLinkText = "Incomplete";
@@ -122,7 +120,6 @@ const TodoItem = (props) => {
   };
 
   const onUpdateTodoHander = async (id) => {
-    //     alert("id = " + id + " todolist id = " + props.todolistid);
 
     const updateLink =
       "http://localhost:3000/api/v1/todo_lists/" +

@@ -18,10 +18,10 @@ const TodoForm = (props) => {
         setTitleError(true);
         setDescError(true);
         throw new Error("Name and description are required");
-      } else if (enteredTitle.length === 0) {
+      } else if (enteredTitle.length <= 2) {
         setTitleError(true);
         throw new Error("Name is required");
-      } else if (enteredDescription.length === 0) {
+      } else if (enteredDescription.length <= 2) {
         setDescError(true);
         throw new Error("Description is required");
       }
@@ -59,6 +59,7 @@ const TodoForm = (props) => {
               style={{ width: 400 }}
               className={errorTitle ? styles.error : ""}
               ref={titleInputRef}
+              name="todo_title"
             ></input>
           </div>
         </div>
@@ -71,12 +72,13 @@ const TodoForm = (props) => {
               style={{ height: 50, width: 400 }}
               className={errorDesc ? styles.error : ""}
               ref={descInputRef}
+              name="todo_desc"
             ></textarea>
           </div>
         </div>
       </div>
       <div>
-        <button type="submit">Create Todo</button>
+        <button type="submit"  name="addtodo">Create Todo</button>
       </div>
     </form>
   );
